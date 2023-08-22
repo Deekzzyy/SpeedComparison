@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpeedTest</title>
+
+    <style>
+
+
+        #content {
+            margin-top: 300px;
+            padding: 30px;
+            background-color: rgb(227, 231, 231);
+            
+        }
+
+
+        #name1 {
+            display: inline;
+        }
+
+        #vr1 {
+            display: inline;
+            border: 3px solid black;
+            padding: 0 50px;
+            margin-left: 5px;
+            font-size: 20px;
+            
+        }
+
+        #name2 {
+            display: inline;
+        }
+
+        #vr2 {
+            display: inline;
+            border: 3px solid black;
+            padding: 0 50px;
+            margin-left: 5px;
+            font-size: 20px;
+        }
+
+        #car1 {
+           
+            display: inline;
+            background-image: url(./assets/Firstcar.svg);
+            padding: 30px;
+            margin-right: 15px;
+        }
+
+        #car2 {
+           
+           display: inline;
+           background-image: url(./assets/Secondcar.svg);
+           padding: 30px;
+           margin-right: 15px;
+       }
+
+
+       #button1 {
+
+        margin-left: 10px;
+       }
+        
+
+       
+       #button2 {
+
+        margin-left: 10px;
+       }
+
+       #compare {
+        border: 3px solid black;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+       }
+    
+
+    </style>
+
+</head>
+
+
+
+
+
+<body>
+
+
+<div id="content">
+    <div id="first">
+        <div id="car1"></div>
+        <h1 id="name1"> Velocidade do Carro 1:</h1>
+        <div id="vr1"></div>
+        <button value="button1" id="button1" >ADICIONE O PRIMEIRO VALOR</button>
+    </div><!--first-->
+    
+    <br>
+    <br>
+
+    <div id="second">
+        <div id="car2"></div>
+        <h1 id="name2">Velocidade do Carro 2:</h1>
+        <div id="vr2"></div>
+        <button value="button2" id="button2">ADICIONE O SEGUNDO VALOR</button>
+    </div><!--second-->
+    <hr>
+    <br>
+
+    <div id="compare">
+    </div><!--compare-->
+</div><!--content-->
+
+
+
+    <script>
+
+        var velocidade1 = 0
+        var velocidade2 = 0
+
+        var button1 = document.getElementById("button1")
+        button1.addEventListener('click', function(){
+            var input = prompt("Digite a velocidade do primeiro carro em KM/h:")
+            if (input !== 0 && input.trim() !== ""){
+                velocidade1 = parseFloat(input)
+                document.getElementById("vr1").innerHTML = velocidade1
+
+                compareVel();
+
+            } else {
+                alert("Por favor, insira um valor válido")
+            }
+            
+        })
+
+
+        var button2 = document.getElementById("button2")
+        button2.addEventListener('click', function(){
+            var input = prompt("Digite a velocidade do segundo carro em KM/h:")
+            if (input !== 0 && input.trim() !== ""){
+                velocidade2 = parseFloat((input))
+                document.getElementById("vr2").innerHTML = velocidade2
+
+                compareVel();
+
+            } else {
+                alert("Por favor, insira um valor válido")
+            }
+
+        })
+
+
+        function compareVel(){
+            if (velocidade1 !== 0 && velocidade2 !== 0 ) {
+                if (velocidade1 > velocidade2) {
+                    document.getElementById("compare").innerHTML = "<h3>O carro 1 é mais rápido</h3>"
+                } else if (velocidade2 > velocidade1) {
+                    document.getElementById("compare").innerHTML = "<h3>O carro 2 é mais rápido</h3>"
+                } else if (velocidade1 == velocidade2) {
+                    document.getElementById("compare").innerHTML = "<h3>Os carros 1 e 2 têm a mesma velocidade</h3>"
+                }
+         } else {
+            alert("Agora coloque a velocidade do outro carro")
+         }
+        }
+        
+        
+    </script>
+
+</body>
+</html>
